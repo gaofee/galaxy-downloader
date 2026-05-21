@@ -553,9 +553,11 @@ export interface Dictionary {
         feedback: string;
         feedbackHint: string;
     };
-    feedbackPage: StaticPageMetaDict & {
-        publicNotice: string;
-        openDiscussion: string;
+    feedbackPage: Omit<StaticPageMetaDict, "intro"> & {
+        privateFeedbackTitle: string;
+        privateFeedbackDescription: string;
+        emailAction: string;
+        emailTemplateBody: string;
     };
     privacyPage: StaticPageMetaDict & {
         points: string[];

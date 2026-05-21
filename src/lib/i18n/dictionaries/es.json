@@ -150,9 +150,10 @@
         "metaTitle": "Feedback | sparkdownloader",
         "metaDescription": "Comparte feedback público e ideas de funciones para sparkdownloader.",
         "title": "Feedback",
-        "intro": "Esta es el área pública de feedback para ideas de funciones, solicitudes de plataformas y preguntas generales.",
-        "publicNotice": "La discusión pública requiere iniciar sesión con GitHub. No publiques enlaces privados, cuentas, cookies, datos de contacto u otra información sensible.",
-        "openDiscussion": "Abrir en GitHub Discussions"
+        "privateFeedbackTitle": "Comentarios por correo electrónico",
+        "privateFeedbackDescription": "También puede optar por enviar sus comentarios por correo electrónico. Para ayudarnos a localizar el problema más rápido, recomendamos incluir la URL de destino, los detalles de su dispositivo o capturas de pantalla relevantes.",
+        "emailAction": "Enviar Correo",
+        "emailTemplateBody": "[Descripción]\nDescriba brevemente el problema o sugerencia:\n\n[URL de Destino]\n(Si aplica, proporcione el enlace que intenta descargar)\n\n[Entorno]\n(ej. Win 11 / Chrome 120 / iOS 17)\n"
     },
     "privacyPage": {
         "metaTitle": "Política de privacidad | sparkdownloader",

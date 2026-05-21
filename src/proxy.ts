@@ -84,7 +84,9 @@ export function proxy(request: NextRequest) {
         locales: i18n.locales,
         defaultLocale: i18n.defaultLocale,
     })
-    request.nextUrl.pathname = `/${locale}${pathname}`
+    request.nextUrl.pathname = pathname === '/'
+        ? `/${locale}`
+        : `/${locale}${pathname}`
 
     const response = NextResponse.redirect(request.nextUrl, 308)
     appendVaryHeader(response.headers, [...LOCALE_REDIRECT_VARY_HEADERS])

@@ -150,9 +150,10 @@
         "metaTitle": "回饋｜sparkdownloader",
         "metaDescription": "在 sparkdownloader 回饋頁提交公開討論和功能建議。",
         "title": "回饋",
-        "intro": "這裡是公開回饋區，適合功能建議、平台支援請求和一般問題討論。",
-        "publicNotice": "公開討論需要使用 GitHub 登入。請不要提交私人連結、帳號、Cookie、聯絡方式或其他敏感資訊。",
-        "openDiscussion": "在 GitHub Discussions 開啟"
+        "privateFeedbackTitle": "透過郵件回饋",
+        "privateFeedbackDescription": "您也可以選擇透過發送郵件來提交您的回饋。為了讓我們更快定位問題，建議在郵件中提供遇到問題的目標連結、設備資訊或相關截圖。",
+        "emailAction": "發送郵件",
+        "emailTemplateBody": "【問題描述】\n請簡要描述遇到的問題或建議：\n\n【目標連結】\n(如涉及解析失敗，請提供原連結)\n\n【設備與環境】\n(例：Win 11 / Chrome 120 / iOS 17)\n"
     },
     "privacyPage": {
         "metaTitle": "隱私政策｜sparkdownloader",

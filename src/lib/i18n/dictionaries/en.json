@@ -150,9 +150,10 @@
         "metaTitle": "Feedback | sparkdownloader",
         "metaDescription": "Share public feedback and feature ideas for sparkdownloader.",
         "title": "Feedback",
-        "intro": "This is the public feedback area for feature ideas, platform requests, and general questions.",
-        "publicNotice": "Public discussion requires GitHub sign-in. Do not post private links, accounts, cookies, contact details, or other sensitive information.",
-        "openDiscussion": "Open in GitHub Discussions"
+        "privateFeedbackTitle": "Feedback via Email",
+        "privateFeedbackDescription": "You can also choose to submit your feedback by sending an email. To help us locate the issue faster, we recommend including the target URL, your device details, or relevant screenshots in your email.",
+        "emailAction": "Send Email",
+        "emailTemplateBody": "[Description]\nPlease briefly describe the issue or suggestion:\n\n[Target URL]\n(If applicable, provide the link you are trying to download)\n\n[Environment]\n(e.g., Win 11 / Chrome 120 / iOS 17)\n"
     },
     "privacyPage": {
         "metaTitle": "Privacy Policy | sparkdownloader",
