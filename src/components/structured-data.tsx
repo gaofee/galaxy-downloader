@@ -26,7 +26,6 @@ const HIDDEN_PLATFORM_TERMS = [
     'wechat',
     'weibo',
     'xiaohongshu',
-    'tiktok',
     '哔哩哔哩',
     '嗶哩嗶哩',
     '抖音',

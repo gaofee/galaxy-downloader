@@ -47,7 +47,7 @@ describe('getPlatformSupportItems', () => {
         expect(keys).not.toContain('wechat');
         expect(keys).not.toContain('weibo');
         expect(keys).not.toContain('xiaohongshu');
-        expect(keys).not.toContain('tiktok');
+        expect(keys).toContain('tiktok');
         expect(keys).not.toContain('youtube');
         expect(keys).toContain('soundcloud');
         expect(keys).toContain('vk');

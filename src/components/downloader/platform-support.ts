@@ -63,7 +63,6 @@ export const HIDDEN_PLATFORM_SUPPORT_KEYS = new Set<PlatformSupportKey>([
     'wechat',
     'weibo',
     'xiaohongshu',
-    'tiktok',
     'youtube',
     'vimeo',
     'dailymotion',
