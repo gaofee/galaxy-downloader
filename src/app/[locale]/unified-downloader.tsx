@@ -13,7 +13,7 @@ import { useTopBarActions } from '@/components/layout/top-bar-actions';
 import type { AudioExtractTask } from '@/components/audio-tool/types';
 import type { MediaPreviewRequest } from '@/components/downloader/media-preview';
 import { buildPrimaryResultPreview } from '@/components/downloader/media-preview';
-import { ArrowUp, Loader2, Link2, X } from 'lucide-react';
+import { ArrowUp, Loader2, X } from 'lucide-react';
 
 import type { DownloadRecord } from './download-history';
 import { useLocalStorageState } from '@/hooks/use-local-storage-state';
@@ -416,29 +416,6 @@ export function UnifiedDownloader({
                                     </h1>
                                     <p className="text-xs sm:text-[13px] leading-relaxed text-foreground/60 text-center break-words">
                                         {dict.unified.pageDescription}
-                                        {dict.unified.exampleUrl && (
-                                            <span className="whitespace-nowrap">
-                                                <button
-                                                    type="button"
-                                                    className="ml-1 inline-flex items-center gap-0.5 rounded-sm bg-primary/10 px-1.5 py-0.5 text-[11px] font-medium text-primary hover:bg-primary/20 transition-colors align-middle relative -top-[1px]"
-                                                    onClick={() => {
-                                                        setUrl(dict.unified.exampleUrl!);
-                                                        toast.success(dict.toast.linkFilled);
-                                                        window.requestAnimationFrame(() => {
-                                                            urlInputRef.current?.focus();
-                                                            const input = urlInputRef.current;
-                                                            if (input) {
-                                                                const valueLength = input.value.length;
-                                                                input.setSelectionRange(valueLength, valueLength);
-                                                            }
-                                                        });
-                                                    }}
-                                                >
-                                                    <Link2 className="h-3 w-3 shrink-0" />
-                                                    <span>{dict.unified.exampleLabel}</span>
-                                                </button>
-                                            </span>
-                                        )}
                                     </p>
                                 </CardHeader>
                                 <CardContent className="px-4 pb-4 pt-1">

@@ -41,6 +41,13 @@ describe('getPlatformSupportItems', () => {
         const items = getPlatformSupportItems(dict as unknown as Pick<Dictionary, 'guide'>);
 
         const keys = items.map((item) => item.key);
+        expect(keys).not.toContain('bilibili');
+        expect(keys).not.toContain('bilibiliTv');
+        expect(keys).not.toContain('douyin');
+        expect(keys).not.toContain('wechat');
+        expect(keys).not.toContain('weibo');
+        expect(keys).not.toContain('xiaohongshu');
+        expect(keys).not.toContain('tiktok');
         expect(keys).not.toContain('youtube');
         expect(keys).toContain('soundcloud');
         expect(keys).toContain('vk');

@@ -7,7 +7,6 @@ import { History, Home, MessageSquare, Music } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { DeferredLanguageSwitcher } from '@/components/deferred-language-switcher'
 import { ThemeSwitcher } from '@/components/theme-switcher'
-import { DeferredChangelogDialog } from '@/components/deferred-changelog-dialog'
 import { DeferredMobileNavMenu } from '@/components/deferred-mobile-nav-menu'
 import { useDictionary } from '@/i18n/client'
 import { i18n } from '@/lib/i18n/config'
@@ -150,7 +149,6 @@ export function AppTopBar({
                                 <span>{dict.feedback.triggerButton}</span>
                             </Link>
                         </Button>
-                        <DeferredChangelogDialog />
                         <ThemeSwitcher />
                         <DeferredLanguageSwitcher />
                     </div>

@@ -11,7 +11,6 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog'
-import { ChangelogDialog } from '@/components/changelog-dialog'
 import { ThemeSwitcher } from '@/components/theme-switcher'
 import { useDictionary } from '@/i18n/client'
 
@@ -58,7 +57,6 @@ export function MobileNavMenu({
                             <span>GitHub</span>
                         </a>
                     </Button>
-                    <ChangelogDialog triggerClassName="w-full justify-start" />
                     <div className="rounded-md border border-border p-1">
                         <ThemeSwitcher fullWidth />
                     </div>
