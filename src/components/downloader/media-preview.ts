@@ -58,7 +58,7 @@ export function canPreviewResultAudio(result: ParsedResultData): boolean {
 }
 
 export function canSharePlayResult(result: ParsedResultData): boolean {
-    return canPreviewResultVideo(result)
+    return canPreviewResultVideo(result) || canPreviewResultAudio(result)
 }
 
 export function buildPrimaryResultPreview(

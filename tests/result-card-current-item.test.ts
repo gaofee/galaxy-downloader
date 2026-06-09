@@ -84,14 +84,6 @@ vi.mock('@/components/ui/input', () => ({
   Input: (props: Record<string, unknown>) => React.createElement('input', props),
 }))
 
-vi.mock('../src/components/downloader/result-card-visibility', () => ({
-  getResultMediaActions: () => ({ videoAction: 'direct-download', audioAction: 'direct-download' }),
-  resolveResultDisplayImages: () => [],
-  shouldHideSingleImagePreview: () => false,
-  shouldShowVideoDownloadButton: (url: string | null | undefined) => Boolean(url),
-  shouldUseFrontendImageProxy: () => false,
-}))
-
 import { ResultCard } from '../src/components/downloader/ResultCard'
 
 describe('ResultCard current collection item highlighting', () => {
@@ -143,5 +135,65 @@ describe('ResultCard current collection item highlighting', () => {
     expect(html).toContain('/api/play?url=')
     expect(html.match(/aria-label="播放视频"/g) ?? []).toHaveLength(1)
     expect(html.match(/aria-label="播放音频"/g) ?? []).toHaveLength(1)
+  })
+
+  test('纯音频单流结果显示默认播放器和分享，但不显示切换按钮', () => {
+    const result = {
+      title: '测试音频',
+      desc: 'audio only',
+      cover: 'https://img.example.com/audio-cover.jpg',
+      platform: 'soundcloud',
+      url: 'https://soundcloud.com/example/track',
+      downloadAudioUrl: 'https://cdn.example.com/audio.mp3',
+      downloadVideoUrl: null,
+      originDownloadAudioUrl: null,
+      originDownloadVideoUrl: null,
+      mediaActions: { video: 'hide', audio: 'direct-download' } as const,
+      noteType: 'audio' as const,
+    }
+
+    const html = renderToStaticMarkup(
+      React.createElement(ResultCard, {
+        result,
+        onClose: () => {},
+        onOpenExtractAudio: () => {},
+        onRequestPreview: () => {},
+      })
+    )
+
+    expect(html).toContain('<audio')
+    expect(html).toContain('>分享<')
+    expect(html.match(/aria-label="播放视频"/g) ?? []).toHaveLength(0)
+    expect(html.match(/aria-label="播放音频"/g) ?? []).toHaveLength(0)
+  })
+
+  test('muxed 单流结果显示默认视频播放器和分享，但不显示切换按钮', () => {
+    const result = {
+      title: '测试视频',
+      desc: 'muxed video',
+      cover: 'https://img.example.com/video-cover.jpg',
+      platform: 'bili',
+      url: 'https://www.bilibili.com/video/BV1muxed/',
+      downloadAudioUrl: null,
+      downloadVideoUrl: 'https://cdn.example.com/video.mp4',
+      originDownloadAudioUrl: null,
+      originDownloadVideoUrl: null,
+      videoAudioMode: 'muxed' as const,
+      mediaActions: { video: 'direct-download', audio: 'extract-audio' } as const,
+    }
+
+    const html = renderToStaticMarkup(
+      React.createElement(ResultCard, {
+        result,
+        onClose: () => {},
+        onOpenExtractAudio: () => {},
+        onRequestPreview: () => {},
+      })
+    )
+
+    expect(html).toContain('<video')
+    expect(html).toContain('>分享<')
+    expect(html.match(/aria-label="播放视频"/g) ?? []).toHaveLength(0)
+    expect(html.match(/aria-label="播放音频"/g) ?? []).toHaveLength(0)
   })
 })

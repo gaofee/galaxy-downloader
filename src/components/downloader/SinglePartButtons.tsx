@@ -61,8 +61,11 @@ export function SinglePartButtons({
     const showVideoDownload = videoAction === 'direct-download' || videoAction === 'merge-then-download';
     const showBrowserHlsDownload = videoAction === 'browser-hls-download' || (videoAction === 'hide' && isHlsPlaylistUrl(result.originDownloadVideoUrl));
     const showAudioDownload = audioAction !== 'hide';
-    const showVideoPreview = previewSourceUrl.length > 0 && canPreviewResultVideo(result);
-    const showAudioPreview = previewSourceUrl.length > 0 && canPreviewResultAudio(result);
+    const canSwitchPreview = previewSourceUrl.length > 0
+        && canPreviewResultVideo(result)
+        && canPreviewResultAudio(result);
+    const showVideoPreview = canSwitchPreview;
+    const showAudioPreview = canSwitchPreview;
     const showOriginVideoLink =
         typeof result.originDownloadVideoUrl === 'string'
         && result.originDownloadVideoUrl.length > 0
