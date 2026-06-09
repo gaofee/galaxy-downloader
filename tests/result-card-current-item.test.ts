@@ -141,7 +141,6 @@ describe('ResultCard current collection item highlighting', () => {
     expect(html).toContain('border-primary bg-primary/5')
     expect(html).toContain('<video')
     expect(html).toContain('/api/play?url=')
-    expect(html).toContain('aria-label="下载封面"')
     expect(html.match(/aria-label="播放视频"/g) ?? []).toHaveLength(1)
     expect(html.match(/aria-label="播放音频"/g) ?? []).toHaveLength(1)
   })

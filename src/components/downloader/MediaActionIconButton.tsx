@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 
 interface MediaActionIconButtonProps {
     label: string;
+    text?: string;
     icon: ComponentType<SVGProps<SVGSVGElement>>;
     variant?: 'outline' | 'secondary' | 'default';
     disabled?: boolean;
@@ -16,6 +17,7 @@ interface MediaActionIconButtonProps {
 
 export function MediaActionIconButton({
     label,
+    text,
     icon: Icon,
     variant = 'outline',
     disabled,
@@ -27,18 +29,19 @@ export function MediaActionIconButton({
         <Button
             type="button"
             variant={variant}
-            size="icon"
-            className={cn("h-8 w-8 shrink-0", className)}
+            size="sm"
+            className={cn('h-8 min-w-0 justify-center gap-1.5 px-2.5 text-xs', className)}
             disabled={disabled}
             onClick={onClick}
             aria-label={label}
             title={label}
         >
             {loading ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
+                <Loader2 className="h-3.5 w-3.5 shrink-0 animate-spin" />
             ) : (
-                <Icon className="h-4 w-4" />
+                <Icon className="h-3.5 w-3.5 shrink-0" />
             )}
+            <span className="truncate">{text ?? label}</span>
         </Button>
     );
 }

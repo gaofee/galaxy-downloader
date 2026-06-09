@@ -1,6 +1,30 @@
 {
   "versions": [
     {
+      "version": "6.0.1",
+      "date": "2026-06-09",
+      "changes": {
+        "zh": [
+          "优化解析结果操作区按钮布局，播放与下载分行展示、按钮改为文字显示，并移除封面下载按钮"
+        ],
+        "en": [
+          "Refined the parse result action layout by separating playback and download into two rows, switching buttons to text labels, and removing the cover download button"
+        ],
+        "ja": [
+          "解析結果の操作エリアのボタン配置を見直し、再生とダウンロードを2行に分け、ボタンをテキスト表示に変更し、カバーのダウンロードボタンを削除しました"
+        ],
+        "zh-tw": [
+          "最佳化解析結果操作區按鈕布局，播放與下載分行顯示、按鈕改為文字顯示，並移除封面下載按鈕"
+        ],
+        "es": [
+          "Se refinó la disposición de acciones en los resultados separando reproducción y descarga en dos filas, cambiando los botones a texto y eliminando el botón de descarga de portada"
+        ],
+        "ru": [
+          "Улучшено расположение кнопок в области действий результатов: воспроизведение и загрузка разделены на две строки, кнопки переведены в текстовый вид, кнопка скачивания обложки удалена"
+        ]
+      }
+    },
+    {
       "version": "6.0.0",
       "date": "2026-05-10",
       "changes": {

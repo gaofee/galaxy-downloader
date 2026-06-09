@@ -16,6 +16,18 @@ import { VideoDownloadIcon, AudioDownloadIcon } from './CustomIcons';
 
 const DEFAULT_VISIBLE_PARTS = 100;
 
+function getActionRowClass(actionCount: number) {
+    if (actionCount >= 3) {
+        return 'grid-cols-3';
+    }
+
+    if (actionCount === 2) {
+        return 'grid-cols-2';
+    }
+
+    return 'grid-cols-1';
+}
+
 export function EmbeddedVideoList({
     videos,
     currentItemId,
@@ -128,12 +140,7 @@ export function EmbeddedVideoList({
                         const videoKey = `${video.id || index}-video`;
                         const audioKey = `${video.id || index}-audio`;
                         const isCurrentItem = Boolean(currentItemId) && video.id === currentItemId;
-                        const actionCount = 1 + Number(shouldShowVideoDownloadButton(videoDownloadUrl)) + Number(Boolean(audioDownloadUrl));
-                        const actionGridClass = actionCount >= 3
-                            ? 'grid-cols-3'
-                            : actionCount === 2
-                                ? 'grid-cols-2'
-                                : 'grid-cols-1';
+                        const downloadActionCount = Number(shouldShowVideoDownloadButton(videoDownloadUrl)) + Number(Boolean(audioDownloadUrl));
 
                         return (
                             <div
@@ -170,38 +177,43 @@ export function EmbeddedVideoList({
                                         )}
                                     </div>
                                 </div>
-                                <div
-                                    className={`grid w-full gap-2 ${actionGridClass} md:flex md:w-auto md:justify-end md:gap-1 md:shrink-0`}
-                                >
-                                    <MediaActionIconButton
-                                        label={`${dict.result.playVideo}: ${displayTitle}`}
-                                        icon={Play}
-                                        variant="secondary"
-                                        disabled={isCurrentItem}
-                                        className="w-full md:w-8"
-                                        onClick={() => onSelectItem?.(video.id)}
-                                    />
-                                    {shouldShowVideoDownloadButton(videoDownloadUrl) && (
+                                <div className="w-full space-y-2 md:min-w-[11rem] md:shrink-0">
+                                    <div className="grid grid-cols-1 gap-2">
                                         <MediaActionIconButton
-                                            label={dict.result.downloadVideo}
-                                            icon={VideoDownloadIcon}
-                                            variant="default"
-                                            disabled={loadingKeys.has(videoKey)}
-                                            loading={loadingKeys.has(videoKey)}
-                                            className="w-full md:w-8"
-                                            onClick={() => triggerDownload(videoDownloadUrl!, videoKey)}
+                                            label={`${dict.result.playVideo}: ${displayTitle}`}
+                                            text={dict.result.playVideo}
+                                            icon={Play}
+                                            variant="secondary"
+                                            disabled={isCurrentItem}
+                                            className="w-full"
+                                            onClick={() => onSelectItem?.(video.id)}
                                         />
-                                    )}
-                                    {audioDownloadUrl && (
-                                        <MediaActionIconButton
-                                            label={dict.result.downloadAudio}
-                                            icon={AudioDownloadIcon}
-                                            variant="default"
-                                            disabled={loadingKeys.has(audioKey)}
-                                            loading={loadingKeys.has(audioKey)}
-                                            className="w-full md:w-8"
-                                            onClick={() => triggerDownload(audioDownloadUrl, audioKey)}
-                                        />
+                                    </div>
+                                    {downloadActionCount > 0 && (
+                                        <div className={`grid ${getActionRowClass(downloadActionCount)} gap-2`}>
+                                            {shouldShowVideoDownloadButton(videoDownloadUrl) && (
+                                                <MediaActionIconButton
+                                                    label={dict.result.downloadVideo}
+                                                    icon={VideoDownloadIcon}
+                                                    variant="default"
+                                                    disabled={loadingKeys.has(videoKey)}
+                                                    loading={loadingKeys.has(videoKey)}
+                                                    className="w-full"
+                                                    onClick={() => triggerDownload(videoDownloadUrl!, videoKey)}
+                                                />
+                                            )}
+                                            {audioDownloadUrl && (
+                                                <MediaActionIconButton
+                                                    label={dict.result.downloadAudio}
+                                                    icon={AudioDownloadIcon}
+                                                    variant="default"
+                                                    disabled={loadingKeys.has(audioKey)}
+                                                    loading={loadingKeys.has(audioKey)}
+                                                    className="w-full"
+                                                    onClick={() => triggerDownload(audioDownloadUrl, audioKey)}
+                                                />
+                                            )}
+                                        </div>
                                     )}
                                 </div>
                             </div>

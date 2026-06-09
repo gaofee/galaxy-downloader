@@ -12,7 +12,7 @@ import { useDictionary } from '@/i18n/client';
 import { toast } from '@/lib/deferred-toast';
 import { buildHlsPlayProxyUrl, HLS_PLAYLIST_ACCEPT, isHlsPlaylistUrl } from '@/lib/hls-playback';
 import type { UnifiedParseResult } from '@/lib/types';
-import { formatDuration, sanitizeFilename } from '@/lib/utils';
+import { formatDuration } from '@/lib/utils';
 
 import { EmbeddedVideoList } from './EmbeddedVideoList';
 import { ImageNoteGrid } from './ImageNoteGrid';
@@ -29,11 +29,8 @@ import {
     resolveResultDisplayImages,
 } from './result-card-visibility';
 import {
-    fetchImageBlobCandidates,
     replaceTemplate,
     resolveCoverSrc,
-    resolveImageDownloadExtension,
-    triggerBlobDownload,
 } from './result-card-utils';
 
 type ResultData = NonNullable<UnifiedParseResult['data']>;
@@ -337,23 +334,6 @@ function ResultCardContent({
         ? `${result.title} · ${effectiveResult.title}`
         : effectiveResult.title || result.title;
     const displayDuration = effectiveResult.duration ?? result.duration;
-    const handleDownloadCover = async () => {
-        if (!selectedCoverUrl) {
-            return;
-        }
-
-        try {
-            const { blob, sourceUrl } = await fetchImageBlobCandidates([
-                coverSrc,
-                selectedCoverUrl,
-            ]);
-            const extension = resolveImageDownloadExtension(sourceUrl, blob.type);
-            triggerBlobDownload(blob, `${sanitizeFilename(displayTitle || dict.result.coverLabel)}-cover.${extension}`);
-        } catch (error) {
-            console.error('Failed to download cover:', error);
-            toast.error(dict.errors.downloadError);
-        }
-    };
 
     return (
         <Card>
@@ -445,7 +425,6 @@ function ResultCardContent({
                             <SinglePartButtons
                                 result={effectiveResult}
                                 previewItem={previewItem}
-                                onDownloadCover={selectedCoverUrl ? handleDownloadCover : undefined}
                                 onOpenExtractAudio={onOpenExtractAudio}
                                 onOpenHlsDownload={setHlsDownloadRequest}
                                 onRequestPreview={onRequestPreview}

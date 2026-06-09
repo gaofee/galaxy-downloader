@@ -73,7 +73,7 @@ export function MultiPartList({
                                 </div>
                             </div>
                             <div
-                                className="flex flex-wrap gap-2 md:justify-end md:gap-1 md:shrink-0"
+                                className="grid w-full gap-2 md:min-w-[11rem] md:grid-cols-2 md:shrink-0"
                                 onClick={(event) => event.stopPropagation()}
                             >
                                 {page.downloadVideoUrl && (
@@ -81,6 +81,7 @@ export function MultiPartList({
                                         label={dict.result.downloadVideo}
                                         icon={VideoDownloadIcon}
                                         variant="default"
+                                        className="w-full"
                                         disabled={loadingKeys.has(`${page.page}-video`)}
                                         loading={loadingKeys.has(`${page.page}-video`)}
                                         onClick={() => triggerDownload(page.downloadVideoUrl!, `${page.page}-video`)}
@@ -91,6 +92,7 @@ export function MultiPartList({
                                         label={dict.result.downloadAudio}
                                         icon={AudioDownloadIcon}
                                         variant="default"
+                                        className="w-full"
                                         disabled={loadingKeys.has(`${page.page}-audio`)}
                                         loading={loadingKeys.has(`${page.page}-audio`)}
                                         onClick={() => triggerDownload(page.downloadAudioUrl!, `${page.page}-audio`)}
